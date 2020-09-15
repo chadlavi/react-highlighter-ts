@@ -7,3 +7,4 @@ echo 'include:
 git add ./docs && \
 git commit -am "update docs" && \
 git push
+git push --tags
