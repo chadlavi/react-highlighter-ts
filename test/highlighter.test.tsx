@@ -5,6 +5,9 @@ import { shallow } from "enzyme";
 const cafeText =
   "Café has a weird e. Cafééééé has five of them. That's how Café works. Cafe has a normal e. Cafeeeee has five of them.";
 
+const longString =
+  "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. ";
+
 describe("<Highlighter>", () => {
   it("should contain the matchElement", () => {
     const noMatchElement = shallow(
@@ -140,27 +143,39 @@ describe("<Highlighter>", () => {
         {text}
       </Highlighter>
     );
-    expect(wrapper1.find("match")).toHaveLength(0);
+    expect(wrapper1.find("mark")).toHaveLength(0);
     const wrapper2 = shallow(
-      <Highlighter search="Ääkkösiä" ignoreDiacritics diacriticsBlacklist="Äöä">
+      <Highlighter search="Ääkkösiä" ignoreDiacritics diacriticsBlacklist="Ää">
         {text}
       </Highlighter>
     );
-    expect(wrapper2.find("match")).toHaveLength(1);
+    expect(wrapper2.find("mark")).toHaveLength(1);
   });
-  // it("should support ignoring diacritics with blacklist with regex", () => {
-  //   const text = "Letter ä is a normal letter here: Ääkkösiä";
-  //   const wrapper1 = shallow(
-  //     <Highlighter search={/k+o/i} ignoreDiacritics>
-  //       {text}
-  //     </Highlighter>
-  //   );
-  //   expect(wrapper1.find("match")).toHaveLength(1);
-  // });
-  // it("should support escaping arbitrary string in search", () => {
-  //   expect(true).toBe(true);
-  // });
-  // it("should not throw on long strings", () => {
-  //   expect(true).toBe(true);
-  // });
+  it("should support ignoring diacritics with blacklist with regex", () => {
+    const text = "Letter ä is a normal letter here: Ääkkösiä";
+    const wrapper1 = shallow(
+      <Highlighter search={/k+o/i} ignoreDiacritics diacriticsBlacklist="Ää">
+        {text}
+      </Highlighter>
+    );
+    expect(wrapper1.find("mark")).toHaveLength(1);
+    const wrapper2 = shallow(
+      <Highlighter search={/ä+/i} ignoreDiacritics diacriticsBlacklist="Ää">
+        {text}
+      </Highlighter>
+    );
+    expect(wrapper2.find("mark")).toHaveLength(3);
+  });
+  it("should support escaping arbitrary string in search", () => {
+    const wrapper = shallow(
+      <Highlighter search="Test (">Test (should not throw)</Highlighter>
+    );
+    expect(wrapper.find("mark")).toHaveLength(1);
+  });
+  it("should be able to handle long strings", () => {
+    const wrapper = shallow(
+      <Highlighter search={/([A-Za-z])+/}>{longString}</Highlighter>
+    );
+    expect(wrapper.find("mark")).toHaveLength(45);
+  });
 });
