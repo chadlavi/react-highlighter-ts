@@ -17,8 +17,8 @@ export interface HighlighterProps
    */
   ignoreDiacritics?: boolean;
   /**
-   * These chars are treated like characters that don't have any diacritics.
-   * Not applicable ignoreDiacritics is `false`.
+   * if `ignoreDiacritics` is true, then the characters supplied in this string
+   * are treated as a list of diacritics to _not_ ignore.
    */
   diacriticsBlacklist?: string;
   /**

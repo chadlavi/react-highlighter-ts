@@ -35,13 +35,13 @@ export function getSearch(props: HighlighterProps): RegExp {
   let s = escapeStringRegexp(search);
 
   if (ignoreDiacritics) {
-    s = removeDiacritics(s, diacriticsBlacklist || "");
+    s = removeDiacritics(s, diacriticsBlacklist);
   }
 
   return new RegExp(s, caseSensitive ? "" : "i");
 }
 
-export const removeDiacritics = (s: string, blacklist: string): string => {
+export const removeDiacritics = (s: string, blacklist?: string): string => {
   if (!String.prototype.normalize) {
     // Fall back to original string
     return s;

@@ -2,6 +2,9 @@ import * as React from "react";
 import { Highlighter } from "../lib";
 import { shallow } from "enzyme";
 
+const cafeText =
+  "Café has a weird e. Cafééééé has five of them. That's how Café works. Cafe has a normal e. Cafeeeee has five of them.";
+
 describe("<Highlighter>", () => {
   it("should contain the matchElement", () => {
     const noMatchElement = shallow(
@@ -66,38 +69,98 @@ describe("<Highlighter>", () => {
     );
     expect(wrapper.find("mark")).toHaveLength(0);
   });
-  // stubs; cf. https://github.com/helior/react-highlighter/blob/master/test/testHighlighter.js
+  // stubs; cf.
+  // https://github.com/helior/react-highlighter/blob/master/test/testHighlighter.js
   it("should support matching diacritics exactly", () => {
-    expect(true).toBe(true);
+    const wrapper = shallow(
+      <Highlighter caseSensitive search="Cafe">
+        {cafeText}
+      </Highlighter>
+    );
+    expect(wrapper.find("mark")).toHaveLength(2);
   });
   it("should support ignoring diacritics", () => {
-    expect(true).toBe(true);
+    const wrapper = shallow(
+      <Highlighter ignoreDiacritics search="Cafe">
+        {cafeText}
+      </Highlighter>
+    );
+    expect(wrapper.find("mark")).toHaveLength(5);
   });
   it("should support regular expressions in search", () => {
-    expect(true).toBe(true);
+    const wrapper = shallow(
+      <Highlighter ignoreDiacritics search={/[A-Za-z]+/}>
+        Easy as 123, ABC...
+      </Highlighter>
+    );
+    const marks = wrapper.find("mark");
+    expect(marks).toHaveLength(3);
+    expect(marks.at(0).text()).toEqual("Easy");
+    expect(marks.at(1).text()).toEqual("as");
+    expect(marks.at(2).text()).toEqual("ABC");
   });
   it("should work when regular expressions in search do not match anything", () => {
-    expect(true).toBe(true);
+    const wrapper = shallow(
+      <Highlighter ignoreDiacritics search={/z+/}>
+        Easy as 123, ABC...
+      </Highlighter>
+    );
+    expect(wrapper.find("mark")).toHaveLength(0);
   });
-  it("should stop immediately if regex matches an empty string", () => {
-    expect(true).toBe(true);
+  it("should not return matches if the supplied search RegEx matches an empty string", () => {
+    const wrapper = shallow(
+      <Highlighter ignoreDiacritics search={/z*/}>
+        Ez as 123, ABC...
+      </Highlighter>
+    );
+    expect(wrapper.find("mark")).toHaveLength(0);
   });
   it("should support matching diacritics exactly with regex", () => {
-    expect(true).toBe(true);
+    const noDiacritics = shallow(
+      <Highlighter search={/Cafe/}>{cafeText}</Highlighter>
+    );
+    expect(noDiacritics.find("mark")).toHaveLength(2);
+    const withDiacritics = shallow(
+      <Highlighter search={/Café/}>{cafeText}</Highlighter>
+    );
+    expect(withDiacritics.find("mark")).toHaveLength(3);
   });
   it("should support ignoring diacritics with regex", () => {
-    expect(true).toBe(true);
+    const wrapper = shallow(
+      <Highlighter ignoreDiacritics search={/Cafe/}>
+        {cafeText}
+      </Highlighter>
+    );
+    expect(wrapper.find("mark")).toHaveLength(5);
   });
   it("should support ignoring diacritics with blacklist", () => {
-    expect(true).toBe(true);
+    const text = "Letter ä is a normal letter here: Ääkkösiä";
+    const wrapper1 = shallow(
+      <Highlighter search="Aakkosia" ignoreDiacritics diacriticsBlacklist="Ää">
+        {text}
+      </Highlighter>
+    );
+    expect(wrapper1.find("match")).toHaveLength(0);
+    const wrapper2 = shallow(
+      <Highlighter search="Ääkkösiä" ignoreDiacritics diacriticsBlacklist="Äöä">
+        {text}
+      </Highlighter>
+    );
+    expect(wrapper2.find("match")).toHaveLength(1);
   });
-  it("should support ignoring diacritics with blacklist with regex", () => {
-    expect(true).toBe(true);
-  });
-  it("should support escaping arbitrary string in search", () => {
-    expect(true).toBe(true);
-  });
-  it("should not throw on long strings", () => {
-    expect(true).toBe(true);
-  });
+  // it("should support ignoring diacritics with blacklist with regex", () => {
+  //   const text = "Letter ä is a normal letter here: Ääkkösiä";
+  //   const wrapper1 = shallow(
+  //     <Highlighter search={/k+o/i} ignoreDiacritics>
+  //       {text}
+  //     </Highlighter>
+  //   );
+  //   expect(wrapper1.find("match")).toHaveLength(1);
+  // });
+  // it("should support escaping arbitrary string in search", () => {
+  //   expect(true).toBe(true);
+  // });
+  // it("should not throw on long strings", () => {
+  //   expect(true).toBe(true);
+  // });
 });
