@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
     "build": "rm -rf ./dist && tsc",
     "postpublish": "./bin/gen-docs",
     "lint": "eslint 'lib/*.{ts,tsx}' --quiet",

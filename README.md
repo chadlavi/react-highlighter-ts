@@ -9,14 +9,23 @@ activity since 2018).
 See [generated type
 documentation](https://chadlavi.github.io/react-highlighter-ts/) for details
 
-## development setup
+## Contributing
+See something amiss? Please open a PR.
+
+## Development setup
 This library does not use any global dependencies, so a simple `npm install`
 should suffice.
 
-## testing
+## Testing
 
-Tests use Jest + Enzyme. 
+Tests have been adapted from the original `react-highlighter` codebase. Tests
+use Jest + Enzyme. 
 
 ```sh
 npm run test
+```
+or to watch file changes: 
+
+```sh
+npm run test:watch
 ```
