@@ -3,7 +3,7 @@
 ./node_modules/.bin/typedoc --out docs --mode modules ./lib && \
 echo 'include:
   - "_*_.html"
-  - "_*_.*.html"' > ./docs/config.yml
+  - "_*_.*.html"' > ./docs/_config.yml
 git add ./docs && \
 git commit -am "update docs" && \
 git push
