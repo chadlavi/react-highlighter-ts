@@ -37,12 +37,15 @@ export const Highlighter = (props: HighlighterProps): JSX.Element => {
    *
    */
   const renderHighlight = (s: string): React.ReactNode =>
-    React.createElement(matchElement, {
-      key: `${s}-${count}`,
-      className: matchClass,
-      style: matchStyle,
-      children: s
-    });
+    React.createElement(
+      matchElement,
+      {
+        key: `${s}-${count}`,
+        className: matchClass,
+        style: matchStyle,
+      },
+      s
+    );
 
   /**
    * Determines which strings of text should be highlighted or not.
@@ -52,7 +55,7 @@ export const Highlighter = (props: HighlighterProps): JSX.Element => {
     subject: string,
     search: RegExp
   ): Array<React.ReactNode> => {
-    let children = [];
+    const children = [];
     let remaining = subject;
 
     while (remaining) {

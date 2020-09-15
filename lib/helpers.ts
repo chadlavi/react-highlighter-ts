@@ -7,11 +7,11 @@ export function getMatchBoundaries(
   subject: string,
   search: RegExp
 ): { first: number; last: number } | undefined {
-  let matches = search.exec(subject);
+  const matches = search.exec(subject);
   if (matches) {
     return {
       first: matches.index,
-      last: matches.index + matches[0].length
+      last: matches.index + matches[0].length,
     };
   }
 }
@@ -26,7 +26,7 @@ export function getSearch(props: HighlighterProps): RegExp {
     search,
     ignoreDiacritics,
     diacriticsBlacklist,
-    caseSensitive
+    caseSensitive,
   } = props;
   if (search instanceof RegExp) {
     return search;
@@ -51,7 +51,7 @@ export const removeDiacritics = (s: string, blacklist: string): string => {
     // No blacklist, just remove all
     return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   } else {
-    let blacklistChars = blacklist.split("");
+    const blacklistChars = blacklist.split("");
 
     // Remove all diacritics that are not a part of a blacklisted character
     // First char cannot be a diacritic
