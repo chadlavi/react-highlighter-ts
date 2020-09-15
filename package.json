@@ -1,0 +1,27 @@
+{
+  "name": "react-highlighter-ts",
+  "version": "0.0.1",
+  "description": "a TypeScript rewrite of the popular package react-highlighter",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf ./dist && ./node_modules/.bin/tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chadlavi/react-highlighter-ts.git"
+  },
+  "author": "Chad Lavimoniere",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chadlavi/react-highlighter-ts/issues"
+  },
+  "homepage": "https://github.com/chadlavi/react-highlighter-ts#readme",
+  "dependencies": {
+    "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.49",
+    "typescript": "^4.0.2"
+  }
+}
