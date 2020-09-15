@@ -25,19 +25,48 @@ describe("<Highlighter>", () => {
     expect(wrapper.children()).toHaveLength(3);
     expect(wrapper.find("mark")).toHaveLength(1);
   });
-  // stubs; cf. https://github.com/helior/react-highlighter/blob/master/test/testHighlighter.js
   it("should allow empty search", () => {
-    expect(true).toBe(true);
+    const wrapper = shallow(
+      <Highlighter search={""}>
+        The quick brown fox jumped over the lazy dog.
+      </Highlighter>
+    );
+    expect(wrapper.children()).toHaveLength(1);
+    expect(wrapper.find("mark")).toHaveLength(0);
   });
   it("should support custom className for matching element", () => {
-    expect(true).toBe(true);
+    const wrapper = shallow(
+      <Highlighter matchClass={"foo-bar"} search="seek">
+        Hide and Seek
+      </Highlighter>
+    );
+    expect(wrapper.find("mark").props().className).toBe("foo-bar");
   });
   it("should support custom style for matching element", () => {
-    expect(true).toBe(true);
+    const wrapper = shallow(
+      <Highlighter matchStyle={{ color: "red" }} search="seek">
+        Hide and Seek
+      </Highlighter>
+    );
+    expect(wrapper.find("mark").props().style?.color).toBe("red");
   });
   it("should support passing props to parent element", () => {
-    expect(true).toBe(true);
+    const wrapper = shallow(
+      <Highlighter className={"foo-bar"} search="seek">
+        Hide and Seek
+      </Highlighter>
+    );
+    expect(wrapper.props().className).toBe("foo-bar");
   });
+  it("should support case sensitive searches", () => {
+    const wrapper = shallow(
+      <Highlighter caseSensitive search="seek">
+        Hide and Seek
+      </Highlighter>
+    );
+    expect(wrapper.find("mark")).toHaveLength(0);
+  });
+  // stubs; cf. https://github.com/helior/react-highlighter/blob/master/test/testHighlighter.js
   it("should support matching diacritics exactly", () => {
     expect(true).toBe(true);
   });
