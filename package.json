@@ -2,9 +2,9 @@
   "name": "react-highlighter-ts",
   "version": "0.0.2",
   "description": "a TypeScript rewrite of the popular package react-highlighter",
-  "main": "dist/lib/index.js",
+  "main": "dist/index.js",
   "files": [
-    "dist/lib"
+    "dist"
   ],
   "scripts": {
     "test": "jest",

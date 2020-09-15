@@ -68,5 +68,8 @@
     "outDir": "dist",
     "sourceMap": true
 
-  }
+  },
+  "exclude": [
+    "./test"
+  ],
 }
