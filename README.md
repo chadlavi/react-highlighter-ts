@@ -7,8 +7,6 @@ This is a TypeScript rewrite of the npm package
 type support, has very out of date dependencies, and seems to be abandoned (no
 activity since 2018).
 
-See [generated type
-documentation](https://chadlavi.github.io/react-highlighter-ts/) for details
 
 ## Usage
 The API for this package is identical to that of the original package,
@@ -22,6 +20,16 @@ export const Example = () => (
   <Highlight search="hello">Hello, World!</Highlight>
 );
 ```
+See [generated type
+documentation](https://chadlavi.github.io/react-highlighter-ts/) for details on
+properties accepted by `<Highlight>`.
+
+### Styling
+By default, this library, wraps matches in an html `<mark>` tag, and does not
+style it. Most browsers style the `<mark>` tag by giving it a yellow background
+and black text. You can style your matches by providing a pre-styled
+element type to `matchElement`, passing a CSS class to `matchClass`, or passing
+CSS rules to `matchStyle`.
 
 ### Migrating from `react-highlighter`
 You should be able to migrate directly from `react-highlighter` to
