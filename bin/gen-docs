@@ -5,6 +5,5 @@ echo 'include:
   - "_*_.html"
   - "_*_.*.html"' > ./docs/_config.yml
 git add ./docs && \
-git commit -am "update docs" && \
+git commit -m "update docs" && \
 git push
-git push --tags
