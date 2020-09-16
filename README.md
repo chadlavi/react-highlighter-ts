@@ -1,4 +1,5 @@
-[![npm version](https://badge.fury.io/js/react-highlighter-ts.svg)](https://www.npmjs.com/package/react-highlighter-ts)
+[![npm
+version](https://badge.fury.io/js/react-highlighter-ts.svg)](https://www.npmjs.com/package/react-highlighter-ts)
 
 # react-highlighter-ts
 This is a TypeScript rewrite of the npm package
@@ -15,7 +16,7 @@ The API for this package is identical to that of the original package,
 
 ```tsx
 import * as React from "react";
-import Highlight from "react-highlighter-ts";
+import { Highlight } from "react-highlighter-ts";
 
 export const Example = () => (
   <Highlight search="hello">Hello, World!</Highlight>
@@ -24,8 +25,8 @@ export const Example = () => (
 
 ### Migrating from `react-highlighter`
 You should be able to migrate directly from `react-highlighter` to
-`react-highlighter-ts` without any changes in your source code. All you'll need
-to do is adjust your imports to point to this library.
+`react-highlighter-ts` without any changes in your source code besides adjusting
+your imports.
 
 ## Contributing
 See something amiss? Please open a PR.
