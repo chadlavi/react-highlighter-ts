@@ -25,7 +25,7 @@ documentation](https://chadlavi.github.io/react-highlighter-ts/) for details on
 properties accepted by `<Highlight>`.
 
 ### Styling
-By default, this library, wraps matches in an html `<mark>` tag, and does not
+By default, this library wraps matches in an html `<mark>` tag, and does not
 style it. Most browsers style the `<mark>` tag by giving it a yellow background
 and black text. You can style your matches by providing a pre-styled
 element type to `matchElement`, passing a CSS class to `matchClass`, or passing
