@@ -1,6 +1,6 @@
 {
   "name": "react-highlighter-ts",
-  "version": "1.1.0-4",
+  "version": "1.1.0",
   "description": "a TypeScript rewrite of the package react-highlighter",
   "main": "dist/index.js",
   "files": [
