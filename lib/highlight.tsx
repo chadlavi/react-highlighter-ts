@@ -52,7 +52,7 @@ export const Highlight = (props: HighlightProps): JSX.Element => {
    * Determines which strings of text should be highlighted or not.
    */
   const highlightChildren = (
-    subject: string,
+    subject: string | undefined,
     search: RegExp
   ): Array<React.ReactNode> => {
     const children = [];
@@ -99,7 +99,7 @@ export const Highlight = (props: HighlightProps): JSX.Element => {
    * A wrapper to the highlight method to determine when the highlighting
    * process should occur.
    */
-  const renderElement = (subject: string): Array<React.ReactNode> => {
+  const renderElement = (subject?: string): Array<React.ReactNode> => {
     if (search) return highlightChildren(subject, getSearch(props));
 
     return [children];
