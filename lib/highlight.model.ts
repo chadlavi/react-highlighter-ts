@@ -39,5 +39,5 @@ export interface HighlightProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
    * Optional ref for the parent `<span>`
    */
-  ref?: React.RefObject<HTMLSpanElement>;
+  ref?: React.Ref<HTMLElement>;
 }
