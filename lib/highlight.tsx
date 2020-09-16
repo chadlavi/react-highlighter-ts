@@ -7,7 +7,10 @@ import { removeDiacritics, getSearch, getMatchBoundaries } from "./helpers";
 /**
  * Highlight matches in a string
  */
-export const Highlight = (props: HighlightProps): JSX.Element => {
+export const Highlight = React.forwardRef(function _Highlight(
+  props: HighlightProps,
+  ref: HighlightProps["ref"]
+): JSX.Element {
   /**
    * We increment this each time there's a match -- it's used to ensure the
    * keys are unique.
@@ -105,5 +108,9 @@ export const Highlight = (props: HighlightProps): JSX.Element => {
     return [children];
   };
 
-  return <span {...rest}>{renderElement(children)}</span>;
-};
+  return (
+    <span {...rest} ref={ref}>
+      {renderElement(children)}
+    </span>
+  );
+});
