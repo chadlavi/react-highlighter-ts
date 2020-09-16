@@ -19,7 +19,6 @@ export function getMatchBoundaries(
 /**
  * Get the search prop, but always in the form of a regular expression. Use
  * this as a proxy to search for consistency.
- *
  */
 export function getSearch(props: HighlightProps): RegExp {
   const {

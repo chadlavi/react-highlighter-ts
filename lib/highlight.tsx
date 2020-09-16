@@ -8,7 +8,10 @@ import { removeDiacritics, getSearch, getMatchBoundaries } from "./helpers";
  * Highlight matches in a string
  */
 export const Highlight = (props: HighlightProps): JSX.Element => {
-  // we increment this each time there's a match -- it's used to ensure thekeys are unique.
+  /**
+   * We increment this each time there's a match -- it's used to ensure the
+   * keys are unique.
+   */
   let count = 0;
 
   const incrementCount = () => count++;
@@ -26,7 +29,6 @@ export const Highlight = (props: HighlightProps): JSX.Element => {
 
   /**
    * Responsible for rending a non-highlighted element.
-   *
    */
   const renderPlain = (s: string): React.ReactNode => (
     <span key={`${s}-${count}`}>{s}</span>
@@ -34,7 +36,6 @@ export const Highlight = (props: HighlightProps): JSX.Element => {
 
   /**
    * Responsible for rending a highlighted element.
-   *
    */
   const renderHighlight = (s: string): React.ReactNode =>
     React.createElement(
@@ -49,7 +50,6 @@ export const Highlight = (props: HighlightProps): JSX.Element => {
 
   /**
    * Determines which strings of text should be highlighted or not.
-   *
    */
   const highlightChildren = (
     subject: string,
@@ -98,7 +98,6 @@ export const Highlight = (props: HighlightProps): JSX.Element => {
   /**
    * A wrapper to the highlight method to determine when the highlighting
    * process should occur.
-   *
    */
   const renderElement = (subject: string): Array<React.ReactNode> => {
     if (search) return highlightChildren(subject, getSearch(props));
