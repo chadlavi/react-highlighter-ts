@@ -9,6 +9,24 @@ activity since 2018).
 See [generated type
 documentation](https://chadlavi.github.io/react-highlighter-ts/) for details
 
+## Usage
+The API for this package is identical to that of the original package,
+`react-highlighter`.
+
+```tsx
+import * as React from "react";
+import Highlight from "react-highlighter-ts";
+
+export const Example = () => (
+  <Highlight search="hello">Hello, World!</Highlight>
+);
+```
+
+### Migrating from `react-highlighter`
+You should be able to migrate directly from `react-highlighter` to
+`react-highlighter-ts` without any changes in your source code. All you'll need
+to do is adjust your imports to point to this library.
+
 ## Contributing
 See something amiss? Please open a PR.
 
