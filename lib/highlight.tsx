@@ -1,13 +1,13 @@
 import React from "react";
 
-import { HighlighterProps } from "./highlight.model";
+import { HighlightProps } from "./highlight.model";
 
 import { removeDiacritics, getSearch, getMatchBoundaries } from "./helpers";
 
 /**
  * Highlight matches in a string
  */
-export const Highlighter = (props: HighlighterProps): JSX.Element => {
+export const Highlight = (props: HighlightProps): JSX.Element => {
   // we increment this each time there's a match -- it's used to ensure thekeys are unique.
   let count = 0;
 

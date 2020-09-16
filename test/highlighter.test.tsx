@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Highlighter } from "../lib";
+import { Highlight } from "../lib";
 import { shallow } from "enzyme";
 
 const cafeText =
@@ -8,93 +8,93 @@ const cafeText =
 const longString =
   "The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. ";
 
-describe("<Highlighter>", () => {
+describe("<Highlight>", () => {
   it("should contain the matchElement", () => {
     const noMatchElement = shallow(
-      <Highlighter search={"hel"}>Hello World</Highlighter>
+      <Highlight search={"hel"}>Hello World</Highlight>
     );
     expect(noMatchElement.find("mark").exists()).toBe(true);
 
     const hasMatchElement = shallow(
-      <Highlighter matchElement={"em"} search={"hel"}>
+      <Highlight matchElement={"em"} search={"hel"}>
         Hello World
-      </Highlighter>
+      </Highlight>
     );
     expect(hasMatchElement.find("em").exists()).toBe(true);
   });
   it("should have children", () => {
     const wrapper = shallow(
-      <Highlighter search={"fox"}>
+      <Highlight search={"fox"}>
         The quick brown fox jumped over the lazy dog.
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper.children()).toHaveLength(3);
     expect(wrapper.find("mark")).toHaveLength(1);
   });
   it("should allow empty search", () => {
     const wrapper = shallow(
-      <Highlighter search={""}>
+      <Highlight search={""}>
         The quick brown fox jumped over the lazy dog.
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper.children()).toHaveLength(1);
     expect(wrapper.find("mark")).toHaveLength(0);
   });
   it("should support custom className for matching element", () => {
     const wrapper = shallow(
-      <Highlighter matchClass={"foo-bar"} search="seek">
+      <Highlight matchClass={"foo-bar"} search="seek">
         Hide and Seek
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper.find("mark").props().className).toBe("foo-bar");
   });
   it("should support custom style for matching element", () => {
     const wrapper = shallow(
-      <Highlighter matchStyle={{ color: "red" }} search="seek">
+      <Highlight matchStyle={{ color: "red" }} search="seek">
         Hide and Seek
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper.find("mark").props().style?.color).toBe("red");
   });
   it("should support passing props to parent element", () => {
     const wrapper = shallow(
-      <Highlighter className={"foo-bar"} search="seek">
+      <Highlight className={"foo-bar"} search="seek">
         Hide and Seek
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper.props().className).toBe("foo-bar");
   });
   it("should support case sensitive searches", () => {
     const wrapper = shallow(
-      <Highlighter caseSensitive search="seek">
+      <Highlight caseSensitive search="seek">
         Hide and Seek
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper.find("mark")).toHaveLength(0);
   });
   // stubs; cf.
-  // https://github.com/helior/react-highlighter/blob/master/test/testHighlighter.js
+  // https://github.com/helior/react-Highlight/blob/master/test/testHighlight.js
   it("should support matching diacritics exactly", () => {
     const wrapper = shallow(
-      <Highlighter caseSensitive search="Cafe">
+      <Highlight caseSensitive search="Cafe">
         {cafeText}
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper.find("mark")).toHaveLength(2);
   });
   it("should support ignoring diacritics", () => {
     const wrapper = shallow(
-      <Highlighter ignoreDiacritics search="Cafe">
+      <Highlight ignoreDiacritics search="Cafe">
         {cafeText}
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper.find("mark")).toHaveLength(5);
   });
   it("should support regular expressions in search", () => {
     const wrapper = shallow(
-      <Highlighter ignoreDiacritics search={/[A-Za-z]+/}>
+      <Highlight ignoreDiacritics search={/[A-Za-z]+/}>
         Easy as 123, ABC...
-      </Highlighter>
+      </Highlight>
     );
     const marks = wrapper.find("mark");
     expect(marks).toHaveLength(3);
@@ -104,77 +104,77 @@ describe("<Highlighter>", () => {
   });
   it("should work when regular expressions in search do not match anything", () => {
     const wrapper = shallow(
-      <Highlighter ignoreDiacritics search={/z+/}>
+      <Highlight ignoreDiacritics search={/z+/}>
         Easy as 123, ABC...
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper.find("mark")).toHaveLength(0);
   });
   it("should not return matches if the supplied search RegEx matches an empty string", () => {
     const wrapper = shallow(
-      <Highlighter ignoreDiacritics search={/z*/}>
+      <Highlight ignoreDiacritics search={/z*/}>
         Ez as 123, ABC...
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper.find("mark")).toHaveLength(0);
   });
   it("should support matching diacritics exactly with regex", () => {
     const noDiacritics = shallow(
-      <Highlighter search={/Cafe/}>{cafeText}</Highlighter>
+      <Highlight search={/Cafe/}>{cafeText}</Highlight>
     );
     expect(noDiacritics.find("mark")).toHaveLength(2);
     const withDiacritics = shallow(
-      <Highlighter search={/Café/}>{cafeText}</Highlighter>
+      <Highlight search={/Café/}>{cafeText}</Highlight>
     );
     expect(withDiacritics.find("mark")).toHaveLength(3);
   });
   it("should support ignoring diacritics with regex", () => {
     const wrapper = shallow(
-      <Highlighter ignoreDiacritics search={/Cafe/}>
+      <Highlight ignoreDiacritics search={/Cafe/}>
         {cafeText}
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper.find("mark")).toHaveLength(5);
   });
   it("should support ignoring diacritics with blacklist", () => {
     const text = "Letter ä is a normal letter here: Ääkkösiä";
     const wrapper1 = shallow(
-      <Highlighter search="Aakkosia" ignoreDiacritics diacriticsBlacklist="Ää">
+      <Highlight search="Aakkosia" ignoreDiacritics diacriticsBlacklist="Ää">
         {text}
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper1.find("mark")).toHaveLength(0);
     const wrapper2 = shallow(
-      <Highlighter search="Ääkkösiä" ignoreDiacritics diacriticsBlacklist="Ää">
+      <Highlight search="Ääkkösiä" ignoreDiacritics diacriticsBlacklist="Ää">
         {text}
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper2.find("mark")).toHaveLength(1);
   });
   it("should support ignoring diacritics with blacklist with regex", () => {
     const text = "Letter ä is a normal letter here: Ääkkösiä";
     const wrapper1 = shallow(
-      <Highlighter search={/k+o/i} ignoreDiacritics diacriticsBlacklist="Ää">
+      <Highlight search={/k+o/i} ignoreDiacritics diacriticsBlacklist="Ää">
         {text}
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper1.find("mark")).toHaveLength(1);
     const wrapper2 = shallow(
-      <Highlighter search={/ä+/i} ignoreDiacritics diacriticsBlacklist="Ää">
+      <Highlight search={/ä+/i} ignoreDiacritics diacriticsBlacklist="Ää">
         {text}
-      </Highlighter>
+      </Highlight>
     );
     expect(wrapper2.find("mark")).toHaveLength(3);
   });
   it("should support escaping arbitrary string in search", () => {
     const wrapper = shallow(
-      <Highlighter search="Test (">Test (should not throw)</Highlighter>
+      <Highlight search="Test (">Test (should not throw)</Highlight>
     );
     expect(wrapper.find("mark")).toHaveLength(1);
   });
   it("should be able to handle long strings", () => {
     const wrapper = shallow(
-      <Highlighter search={/([A-Za-z])+/}>{longString}</Highlighter>
+      <Highlight search={/([A-Za-z])+/}>{longString}</Highlight>
     );
     expect(wrapper.find("mark")).toHaveLength(45);
   });

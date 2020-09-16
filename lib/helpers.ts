@@ -1,4 +1,4 @@
-import { HighlighterProps } from "./highlight.model";
+import { HighlightProps } from "./highlight.model";
 
 /**
  * Get the indexes of the first and last characters of the matched string.
@@ -21,7 +21,7 @@ export function getMatchBoundaries(
  * this as a proxy to search for consistency.
  *
  */
-export function getSearch(props: HighlighterProps): RegExp {
+export function getSearch(props: HighlightProps): RegExp {
   const {
     search,
     ignoreDiacritics,

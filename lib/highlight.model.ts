@@ -1,7 +1,6 @@
 import { CSSProperties } from "react";
 
-export interface HighlighterProps
-  extends React.HTMLAttributes<HTMLSpanElement> {
+export interface HighlightProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
    * The string of text (or Regular Expression) to highlight
    */
@@ -34,7 +33,7 @@ export interface HighlighterProps
    */
   matchStyle?: CSSProperties;
   /**
-   * The children passed to `<Highlighter>` must be a string
+   * The children passed to `<Highlight>` must be a string
    */
   children: string;
 }
