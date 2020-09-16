@@ -4,7 +4,7 @@ export interface HighlightProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**
    * The string of text (or Regular Expression) to highlight
    */
-  search: string | RegExp;
+  search?: string | RegExp;
   /**
    * Determine whether string matching should be case-sensitive. Not applicable
    * to regular expression searches. Defaults to `false`.
