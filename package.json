@@ -10,6 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "build": "rm -rf ./dist && tsc",
+    "prepublishOnly": "npm run test",
     "postpublish": "./bin/gen-docs",
     "lint": "eslint 'lib/*.{ts,tsx}' --quiet",
     "lint:fix": "npm run lint --fix"
