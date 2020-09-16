@@ -12,7 +12,7 @@
     "build": "rm -rf ./dist && tsc",
     "postpublish": "./bin/gen-docs",
     "lint": "eslint 'lib/*.{ts,tsx}' --quiet",
-    "lint:fix": "lint --fix"
+    "lint:fix": "npm run lint --fix"
   },
   "repository": {
     "type": "git",
