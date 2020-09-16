@@ -1,4 +1,4 @@
 #!/bin/bash
 
 git push --tags &&\
-./gen-docs
+./bin/gen-docs
