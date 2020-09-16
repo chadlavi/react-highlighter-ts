@@ -1,4 +1,2 @@
-import { Highlight } from "./highlight";
-export { Highlight };
-export default Highlight;
+export { Highlight } from "./highlight";
 export { HighlightProps } from "./highlight.model";
