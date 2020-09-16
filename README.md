@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/react-highlighter-ts.svg)](https://badge.fury.io/js/react-highlighter-ts)
+[![npm version](https://badge.fury.io/js/react-highlighter-ts.svg)](https://www.npmjs.com/package/react-highlighter-ts)
 
 # react-highlighter-ts
 This is a TypeScript rewrite of the popular npm package
