@@ -60,5 +60,5 @@ export const removeDiacritics = (s: string, blacklist?: string): string => {
   }
 };
 
-const escapeStringRegexp = (s: string): string =>
-  s.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d");
+const escapeStringRegexp = (s?: string): string =>
+  s ? s.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d") : "";
