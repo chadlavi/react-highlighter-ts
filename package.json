@@ -1,6 +1,6 @@
 {
   "name": "react-highlighter-ts",
-  "version": "1.1.0-1",
+  "version": "1.1.0-2",
   "description": "a TypeScript rewrite of the package react-highlighter",
   "main": "dist/index.js",
   "files": [
@@ -10,6 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "build": "rm -rf ./dist && tsc",
+    "prepack": "npm run build",
     "prepublishOnly": "npm run test",
     "postpublish": "./bin/post-publish",
     "lint": "eslint 'lib/*.{ts,tsx}' --quiet",
