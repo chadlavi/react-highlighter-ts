@@ -1,6 +1,14 @@
 #!/bin/bash
 
-./node_modules/.bin/typedoc --out docs --mode modules ./lib && \
+./node_modules/.bin/typedoc \
+  --excludeExternals \
+  --excludeNotExported \
+  --excludeProtected \
+  --hideGenerator \
+  --includeVersion \
+  --mode modules \
+  --theme minimal \
+  ./lib/highlight.model.ts && \
 echo 'include:
   - "_*_.html"
   - "_*_.*.html"' > ./docs/_config.yml
