@@ -7,7 +7,7 @@
   --hideGenerator \
   --includeVersion \
   --mode modules \
-  --theme minimal \
+  --theme docs-theme \
   ./lib/highlight.model.ts && \
 echo 'include:
   - "_*_.html"
