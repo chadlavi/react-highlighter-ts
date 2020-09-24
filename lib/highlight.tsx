@@ -27,6 +27,7 @@ export const Highlight = React.forwardRef(function _Highlight(
     matchClass = "highlight",
     matchStyle = {},
     children,
+    caseSensitive: _c,
     ...rest
   } = props;
 

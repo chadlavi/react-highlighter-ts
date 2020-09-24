@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="README.md" />
+
+[![npm
+version](https://badge.fury.io/js/react-highlighter-ts.svg)](https://www.npmjs.com/package/react-highlighter-ts)
+
+# react-highlighter-ts
+This is a TypeScript rewrite of the npm package
+[`react-highligher`](https://github.com/helior/react-highlighter), which has no
+type support, has very out of date dependencies, and seems to be abandoned (no
+activity since 2018).
+
+
+## Usage
+The API for this package is identical to that of the original package,
+`react-highlighter`.
+
+```tsx
+import * as React from "react";
+import { Highlight } from "react-highlighter-ts";
+
+export const Example = () => (
+  <Highlight search="hello">Hello, World!</Highlight>
+);
+```
+
+### Styling
+By default, this library wraps matches in an html `<mark>` tag, and does not
+style it. Most browsers style the `<mark>` tag by giving it a yellow background
+and black text. You can style your matches by providing a pre-styled
+element type to `matchElement`, passing a CSS class to `matchClass`, or passing
+CSS rules to `matchStyle`.
+
+### Migrating from `react-highlighter`
+You should be able to migrate directly from `react-highlighter` to
+`react-highlighter-ts` without any changes in your source code besides adjusting
+your imports.
