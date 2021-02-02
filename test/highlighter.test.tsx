@@ -30,6 +30,27 @@ describe("<Highlight>", () => {
     );
     expect(wrapper.children()).toHaveLength(3);
     expect(wrapper.find("mark")).toHaveLength(1);
+    expect(wrapper.text()).toEqual(
+      "The quick brown fox jumped over the lazy dog."
+    );
+  });
+  it("should recursively highlight within children", () => {
+    const wrapper = shallow(
+      <Highlight search={"fox"}>
+        <span className="foo">
+          The quick{" "}
+          <span className="foo">
+            brown <span className="foo">fox jumped</span> over the
+          </span>{" "}
+          other fox.
+        </span>
+      </Highlight>
+    );
+    expect(wrapper.find("span.foo")).toHaveLength(3);
+    expect(wrapper.find("mark")).toHaveLength(2);
+    expect(wrapper.text()).toEqual(
+      "The quick brown fox jumped over the other fox."
+    );
   });
   it("should allow empty search", () => {
     const wrapper = shallow(

@@ -1,3 +1,10 @@
+import {
+  ReactElement,
+  ReactNode,
+  Children,
+  isValidElement,
+  cloneElement,
+} from "react";
 import { HighlightProps } from "./highlight.model";
 
 /**
@@ -62,3 +69,37 @@ export const removeDiacritics = (s: string, blacklist?: string): string => {
 
 const escapeStringRegexp = (s?: string): string =>
   s ? s.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d") : "";
+
+const hasChildren = (
+  element: ReactNode
+): element is ReactElement<{ children: ReactNode[] }> =>
+  isValidElement<{ children?: ReactNode[] }>(element) &&
+  Boolean(element.props.children);
+
+export type MapFunction = (
+  child: ReactNode,
+  index?: number,
+  children?: readonly ReactNode[]
+) => ReactNode;
+
+export const deepMap = (
+  children: ReactNode,
+  deepMapFn: MapFunction
+): ReactNode[] => {
+  return Children.toArray(children).map(
+    (child: ReactNode, index: number, mapChildren: readonly ReactNode[]) => {
+      if (isValidElement(child) && hasChildren(child)) {
+        // Clone the child that has children and map them too
+        return deepMapFn(
+          cloneElement(child, {
+            ...child.props,
+            children: deepMap(child.props.children, deepMapFn),
+          })
+        );
+      }
+      return deepMapFn(child, index, mapChildren);
+    }
+  );
+};
+
+export default deepMap;
