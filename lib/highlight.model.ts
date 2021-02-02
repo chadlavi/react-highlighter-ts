@@ -33,9 +33,9 @@ export interface HighlightProps extends React.HTMLAttributes<HTMLSpanElement> {
    */
   matchStyle?: CSSProperties;
   /**
-   * The children passed to `<Highlight>` must be a string
+   * The children passed to `<Highlight>`
    */
-  children?: React.ReactChild;
+  children?: React.ReactNode;
   /**
    * Optional ref for the parent `<span>`
    */
