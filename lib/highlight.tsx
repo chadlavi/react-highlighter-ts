@@ -1,8 +1,13 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 import { HighlightProps } from "./highlight.model";
 
-import { removeDiacritics, getSearch, getMatchBoundaries } from "./helpers";
+import {
+  deepMap,
+  removeDiacritics,
+  getSearch,
+  getMatchBoundaries,
+} from "./helpers";
 
 /**
  * Highlight matches in a string
@@ -103,8 +108,14 @@ export const Highlight = React.forwardRef(function _Highlight(
    * A wrapper to the highlight method to determine when the highlighting
    * process should occur.
    */
-  const renderElement = (subject?: string): Array<React.ReactNode> => {
-    if (search) return highlightChildren(subject, getSearch(props));
+  const renderElement = (children?: ReactNode): Array<React.ReactNode> => {
+    if (search)
+      return deepMap(children, (c) => {
+        if (typeof c === "string") {
+          return highlightChildren(c, getSearch(props));
+        }
+        return c;
+      });
 
     return [children];
   };
