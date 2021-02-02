@@ -70,6 +70,9 @@ export const removeDiacritics = (s: string, blacklist?: string): string => {
 const escapeStringRegexp = (s?: string): string =>
   s ? s.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d") : "";
 
+/**
+ * Borrowed from https://github.com/fernandopasik/react-children-utilities/blob/9720f5fcc3f7cb46fa81909780d97356c201c041/src/lib/hasChildren.ts
+ */
 const hasChildren = (
   element: ReactNode
 ): element is ReactElement<{ children: ReactNode[] }> =>
@@ -82,6 +85,9 @@ export type MapFunction = (
   children?: readonly ReactNode[]
 ) => ReactNode;
 
+/**
+ * Borrowed from https://github.com/fernandopasik/react-children-utilities/blob/9720f5fcc3f7cb46fa81909780d97356c201c041/src/lib/deepMap.ts
+ */
 export const deepMap = (
   children: ReactNode,
   deepMapFn: MapFunction
