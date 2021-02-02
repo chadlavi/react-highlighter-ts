@@ -9,7 +9,4 @@ module.exports = {
     "@storybook/addon-controls",
     "@storybook/addon-toolbars",
   ],
-  reactDocgenTypescriptOptions: {
-    shouldExtractLiteralValuesFromEnum: true,
-  }
 }
