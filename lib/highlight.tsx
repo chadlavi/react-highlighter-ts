@@ -11,6 +11,8 @@ import {
 
 /**
  * Highlight matches in a string
+ *
+ * See docs at https://chadlavi.github.io/react-highlighter-ts/
  */
 export const Highlight = React.forwardRef(function _Highlight(
   props: HighlightProps,
