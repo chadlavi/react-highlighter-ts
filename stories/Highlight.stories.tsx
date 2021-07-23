@@ -5,6 +5,13 @@ import { Highlight, HighlightProps } from "../lib";
 
 export default {
   title: "Highlight",
+  parameters: {
+    docs: {
+      description: {
+        component: "Highlight matches in a string"
+      }
+    }
+  },
   component: Highlight,
   argTypes: {
     search: {
