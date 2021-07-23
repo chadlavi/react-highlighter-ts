@@ -4,13 +4,13 @@ import { Story } from "@storybook/react/types-6-0";
 import { Highlight, HighlightProps } from "../lib";
 
 export default {
-  title: "Highlight",
+  title: "Examples",
   parameters: {
     docs: {
       description: {
-        component: "Highlight matches in a string"
-      }
-    }
+        component: "Highlight matches in a string",
+      },
+    },
   },
   component: Highlight,
   argTypes: {
@@ -46,3 +46,30 @@ export const Default: Story<HighlightProps> = (args) => {
   return <Highlight {...rest} search={makeSearch(search)} />;
 };
 Default.storyName = "Highlight";
+
+export const WithMatchStyle = Default.bind({});
+WithMatchStyle.storyName = "With matchStyle prop";
+WithMatchStyle.args = {
+  matchStyle: { background: "lightblue", borderRadius: 4 },
+};
+WithMatchStyle.parameters = {
+  docs: {
+    description: {
+      story: "In this example, the `matchStyle` prop is used to style matches.",
+    },
+  },
+};
+
+export const WithMatchClass = Default.bind({});
+WithMatchClass.storyName = "With matchClass prop";
+WithMatchClass.args = {
+  matchClass: "example",
+};
+WithMatchClass.parameters = {
+  docs: {
+    description: {
+      story:
+        "In this example, the `matchClass` prop is used to style matches (this requires that you have a css class defined elsewhere).",
+    },
+  },
+};
