@@ -11,6 +11,7 @@
   "files": [
     "dist/lib"
   ],
+  "types": "dist/lib/index.d.ts",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
