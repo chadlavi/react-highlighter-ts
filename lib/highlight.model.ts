@@ -1,6 +1,7 @@
 import { CSSProperties } from "react";
 
-export interface HighlightProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'css'> {
+export interface HighlightProps
+  extends Omit<React.HTMLAttributes<HTMLSpanElement>, "css"> {
   /**
    * The string of text (or Regular Expression) to highlight
    */

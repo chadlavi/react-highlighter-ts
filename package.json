@@ -19,7 +19,7 @@
     "prepack": "npm run build",
     "prepublishOnly": "npm run test",
     "postpublish": "npm run deploy-storybook",
-    "lint": "eslint 'lib/*.{ts,tsx}' --quiet",
+    "lint": "eslint 'lib/*.{ts,tsx}' stories --quiet",
     "lint:fix": "npm run lint --fix",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
