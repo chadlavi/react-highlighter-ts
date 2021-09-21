@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { createElement, forwardRef, ReactNode } from "react";
 
 import { HighlightProps } from "./highlight.model";
 
@@ -14,7 +14,7 @@ import {
  *
  * See docs at https://chadlavi.github.io/react-highlighter-ts/
  */
-export const Highlight = React.forwardRef(function _Highlight(
+export const Highlight = forwardRef(function _Highlight(
   props: HighlightProps,
   ref: HighlightProps["ref"]
 ): JSX.Element {
@@ -49,7 +49,7 @@ export const Highlight = React.forwardRef(function _Highlight(
    * Responsible for rending a highlighted element.
    */
   const renderHighlight = (s: string): React.ReactNode =>
-    React.createElement(
+    createElement(
       matchElement,
       {
         key: `${s}-${count}`,

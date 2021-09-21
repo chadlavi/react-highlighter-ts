@@ -15,8 +15,9 @@ module.exports = {
   extends: [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
+    "prettier",
     "plugin:prettier/recommended",
+    "plugin:react/jsx-runtime",
   ],
   rules: {
     "react/prop-types": "off",
