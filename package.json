@@ -7,7 +7,7 @@
     "highlight",
     "typescript"
   ],
-  "main": "dist/index.js",
+  "main": "dist/lib/index.js",
   "files": [
     "dist/lib"
   ],
