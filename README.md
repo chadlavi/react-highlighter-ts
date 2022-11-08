@@ -10,7 +10,7 @@ activity since 2018).
 
 ## Version note
 
-Starting with version 18.0.0, this library's main version will be pinned to the compatible version of React.
+Starting with version 18.0.0, this library's major version number will be pinned to the compatible major version of React.
 
 For React version 17.x compatability, install version `^2.2.0`.
 
