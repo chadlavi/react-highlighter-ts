@@ -34,7 +34,7 @@
   "bugs": {
     "url": "https://github.com/chadlavi/react-highlighter-ts/issues"
   },
-  "homepage": "https://github.com/chadlavi/react-highlighter-ts#readme",
+  "homepage": "https://chadlavi.github.io/react-highlighter-ts",
   "dependencies": {
     "react": "^18.2.0"
   },
